@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Form</title>
+      {% load static  %}
+    <script defer src= "{% static 'passdate.js' %}"></script>
+    <link rel='stylesheet' href="{% static 'styles/bootstrap-5.3.8-dist/bootstrap-5.3.8-dist/css/bootstrap.min.css' %}">
+    <!-- You can link external CSS files here -->
+</head>
+<body class='d-flex justify-content-center align-items-center bg-info-subtle h-100 w-100'>
+  
+    <form method='post' action='/hospital/confirm/' class='m-5 p-5 bg-white w-25 border rounded '>
+        {% csrf_token %}
+        <div class='d-flex flex-column gap-2'>
+            <label for='name' class='text-secondary'>Full Name<span class='text-danger'>*</span></label>
+            <input class="form-control px-2" type='text' id='name' name='name' required>
+        </div>
+        <br/>
+        <div class='d-flex flex-column gap-2'>
+            <label for='dob' class='text-secondary'>Date of Birth<span class='text-danger'>*</span></label>
+            <input class="form-control px-2" type='date' id='dob' name='dob' required>
+        </div>
+        <br/>
+        <div class='d-flex flex-column gap-2'>
+            <label for='age' class='text-secondary'>Age<span class='text-danger'>*</span></label>
+            <input class="form-control px-2" type='text' id='age' name='age' required>
+        </div>
+        <br/>
+        <div class='d-flex flex-row gap-2 '>
+            <label for='gender' class='text-secondary'>Gender<span class='text-danger'>*</span></label>
+            <input class="form-check-input" type='radio' id='gender' name='gender' required value ='Male'>Male 
+            <input class="form-check-input" type='radio' id='gender' name='gender' required value ='Female'>Female 
+            <input class="form-check-input" type='radio' id='gender' name='gender' required value ='Others' >Others
+        </div>
+        <br/>
+        <div class='d-flex flex-column gap-2'>
+            <label for='disease' class='text-secondary'>Disease<span class='text-danger'>*</span></label>
+            <input class="form-control px-2" type='text' id='disease' name='disease' required>
+        </div>
+        <br/>
+        <div class='d-flex flex-column gap-2'>
+            <label for='number' class='text-secondary'>Number<span class='text-danger'>*</span></label>
+            <input class="form-control px-2" type='text' id='number' name='number' required>
+        </div>
+        <br/>
+        <div class='d-flex flex-column gap-2'>
+            <label for='date' class='text-secondary'>Date<span class='text-danger'>*</span></label>
+            <input class="form-control px-2" type='date' id='date' name='date' required >
+        </div>
+        <br/>
+        <div class='d-flex flex-column gap-2'>
+            <label for='doctor' class='text-secondary'>Doctor<span class='text-danger'>*</span></label>
+            <select class="form-select" id='doctor' name='doctor' required onChange="pass_date()">
+                {% for doctor in data %}
+                    <option value={{ doctor.doctor_id }}>{{ doctor.doctor_name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <br/>
+        <div class='d-flex flex-column gap-2'>
+            <label for='slot' class='text-secondary'>Slot<span class='text-danger'>*</span></label>
+            <select class="form-select" id='slot' name='slot' required>
+                <option id='options'></option>
+            </select>
+        </div>
+        <br/>
+        <button type='Submit' class='btn btn-primary'>Book Appointment</button>
+    </form>
+
+    {% comment %} <scripts></scripts> {% endcomment %}
+</body>
+</html>

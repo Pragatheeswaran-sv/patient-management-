@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmation page</title>
+    {% load static  %}
+    <link rel='stylesheet' href="{% static 'styles/bootstrap-5.3.8-dist/bootstrap-5.3.8-dist/css/bootstrap.min.css' %}">
+</head>
+<body class='d-flex justify-content-center  align-items-center w-100 bg-primary-subtle'>
+        <div class='m-5  w-50 '>
+            <h1 class='m-0 bg-primary p-3 text-center text-bold text-white rounded'>Slot Booked</h1>
+            <div class=''>
+                <table class="table table-bordered w-100 rounded"> 
+                    <tr class='w-100'>
+                        <th class='text-uppercase p-3'>Field</th>
+                        <th class='text-uppercase p-3'>Details</th> 
+                    </tr>
+                    {%for key, value in data.items %}
+                        <tr class='w-100'>
+                            <td class='text-uppercase p-3'>{{key}}</td>
+                            <td class='text-uppercase p-3'>{{value}}</td> 
+                        </tr>
+                    {% endfor %}
+                </table>
+                
+            </div>
+        </div>
+        
+        <br/>
+    </form>
+</body>
+</html>
