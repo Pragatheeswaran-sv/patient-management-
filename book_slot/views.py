@@ -83,7 +83,6 @@ def availabe_slots(request):
         condition  = Booking.objects.filter(doctor_id = user_doctor_id, slot_date = format_user_date, slod_id = slot_id).exists()
         if condition :
             data = {
-                
                 'slot_id' : slot_id,
                 'time' : time +' '+'(Booked)',
                 'length' : len(time +' '+'(Booked)')                 
